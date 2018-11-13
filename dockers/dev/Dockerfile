@@ -13,7 +13,7 @@ RUN apt-get install \
 WORKDIR /home
 
 ## add requirements.txt file
-ADD dockers/dev/requirements.txt .
+ADD ./requirements.txt .
 
 ## install requirements
 RUN pip3 install -r requirements.txt

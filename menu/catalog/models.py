@@ -2,6 +2,14 @@ from django.db import models
 
 # Create your models here.
 
+class Category(models.Model):
+    """ 
+    This model represents a product category
+    """
+
+    # Category name
+    name = models.TextField(max_length="20")
+
 class ProductType(models.Model):
     """
     This model represents a Product Type
@@ -12,6 +20,9 @@ class ProductType(models.Model):
 
     # Product Description
     description = models.TextField(max_length="100")
+
+    #Category from ProductType
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
 class Product(models.Model):
@@ -34,11 +45,4 @@ class Product(models.Model):
     # Product Price
     price = models.DecimalField(decimal_places=2, max_digits=3)
     
-
-class Menu(models.Model):
-    """
-    This model represents a restaurant menu 
-    """
-
-    # product_id from extern service
-    product_id = models.IntegerField()
+    
