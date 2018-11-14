@@ -7,8 +7,8 @@ public class CategoryDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
-
-    private Long cetegoryId;
+    
+    private Long categoryId;
 
     public String getName() {
         return name;
@@ -18,11 +18,11 @@ public class CategoryDto implements Serializable {
         this.name = name;
     }
 
-    public Long getCetegoryId() {
-        return cetegoryId;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCetegoryId(Long cetegoryId) {
-        this.cetegoryId = cetegoryId;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 }

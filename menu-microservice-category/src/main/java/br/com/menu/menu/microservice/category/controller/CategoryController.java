@@ -1,11 +1,8 @@
 package br.com.menu.menu.microservice.category.controller;
-import br.com.menu.menu.microservice.category.model.CategoryEntity;
+import br.com.menu.menu.microservice.category.dto.CategoryDto;
 import br.com.menu.menu.microservice.category.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/menu/category")
@@ -15,10 +12,27 @@ public class CategoryController {
     public CategoryService categoryService;
 
     @PostMapping("/create")
-    public CategoryEntity createCategory(CategoryEntity categoryEntity){
-        return categoryService.createCategory(categoryEntity);
+    public CategoryDto createCategory(@RequestBody final CategoryDto categoryDto){
+        return categoryService.createCategory(categoryDto);
     }
 
-    @GetMapping("/foundCategory")
+    @GetMapping("/found/{id}")
+    public CategoryDto foundCategory(@PathVariable final Long id){
+        return categoryService.foundCategory(id);
+    }
 
+    @PutMapping("/update")
+    public CategoryDto updateCategory(@RequestBody CategoryDto categoryDto) {
+        return categoryService.updateCategory(categoryDto);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteCategory(@RequestBody Long id) {
+        categoryService.deleteCategory(id);
+    }
+
+//    @GetMapping
+//    public void listCategory() {
+//        categoryService
+//    }
 }

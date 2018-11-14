@@ -9,13 +9,13 @@ public class CategoryEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", length = 20, nullable = false)
     private String name;
 
     @Id
     @Column(name = "CATEGORY_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long cetegoryId;
+    private Long categoryId;
 
     public String getName() {
         return name;
@@ -25,11 +25,11 @@ public class CategoryEntity implements Serializable {
         this.name = name;
     }
 
-    public Long getCetegoryId() {
-        return cetegoryId;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCetegoryId(Long cetegoryId) {
-        this.cetegoryId = cetegoryId;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 }
