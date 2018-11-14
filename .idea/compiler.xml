@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="menu-microservice-category" />
+        <module name="menu-microservice-product" />
+      </profile>
+      <profile name="Annotation profile for menu-microserice-product-type" enabled="true">
+        <sourceOutputDir name="../menu-microserice-product-type/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../menu-microserice-product-type/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="menu-microserice-product-type" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
