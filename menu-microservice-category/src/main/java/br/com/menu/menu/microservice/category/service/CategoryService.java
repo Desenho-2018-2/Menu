@@ -2,9 +2,13 @@ package br.com.menu.menu.microservice.category.service;
 
 import br.com.menu.menu.microservice.category.dto.CategoryDto;
 import br.com.menu.menu.microservice.category.mapper.CategoryMapper;
+import br.com.menu.menu.microservice.category.model.CategoryEntity;
 import br.com.menu.menu.microservice.category.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
@@ -37,9 +41,10 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
 
-//    public Iterable<CategoryDto> listCategory() {
-//        return categoryRepository.findAll().iterator().forEachRemaining(categoryEntity -> categoryMapper.entityToDto(categoryEntity));
-//    }
+    public List<CategoryDto> listCategory() {
+        List<CategoryEntity> categoryEntities = (List<CategoryEntity>) categoryRepository.findAll();
+        return categoryEntities.stream().map(a -> categoryMapper.entityToDto(a)).collect(Collectors.toList());
+    }
 
     private boolean validateCategoryEntity(CategoryDto categoryDto) {
         if(categoryDto.getName() != null && !categoryDto.getName().isEmpty()) {

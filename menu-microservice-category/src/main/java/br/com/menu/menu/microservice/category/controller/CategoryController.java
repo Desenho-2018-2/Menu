@@ -1,8 +1,11 @@
 package br.com.menu.menu.microservice.category.controller;
+
 import br.com.menu.menu.microservice.category.dto.CategoryDto;
 import br.com.menu.menu.microservice.category.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/menu/category")
@@ -31,8 +34,8 @@ public class CategoryController {
         categoryService.deleteCategory(id);
     }
 
-//    @GetMapping
-//    public void listCategory() {
-//        categoryService
-//    }
+    @GetMapping("/list")
+    public List<CategoryDto> listCategory() {
+       return categoryService.listCategory();
+    }
 }
