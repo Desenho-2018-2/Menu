@@ -1,7 +1,5 @@
 package br.com.menu.menu.microservice.product.type.model;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,11 +10,11 @@ public class ProductTypeEntity implements Serializable {
     private static final long serialVersionUID = 2L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PRODUCT_TYPE_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productTypeId;
 
-    @Column(name = "DESCRIPTION", length = 50)
+    @Column(name = "DESCRIPTION", length = 50, nullable = false)
     private String description;
 
     @ManyToOne
