@@ -5,3 +5,12 @@ RESTful API for managing menu
 and run the project.
 * The Menu MicroService it's a Maven project, so you should download it. To build the project, run the command:
 ```mvn install```. If everything is ok, you will be able to see a ```BUILD SUCCESS``` message on your screen.
+
+## Run docker
+
+* Clone the project.
+* In root project, run:
+
+```
+    $ ./start.sh
+ ```
