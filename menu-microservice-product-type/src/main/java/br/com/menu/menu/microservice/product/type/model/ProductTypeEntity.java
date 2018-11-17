@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "PRODUCT_TYPE")
+@IdClass(ProductTypeEntityPk.class)
 public class ProductTypeEntity implements Serializable {
 
     private static final long serialVersionUID = 2L;
@@ -14,6 +15,7 @@ public class ProductTypeEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productTypeId;
 
+    @Id
     @Column(name = "DESCRIPTION", length = 50, nullable = false)
     private String description;
 
