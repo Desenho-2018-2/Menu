@@ -26,8 +26,8 @@ public class CategoryService {
         return null;
     }
 
-    public CategoryDto foundCategory(Long id) {
-        return categoryMapper.entityToDto(categoryRepository.findById(id).get());
+    public CategoryDto findCategory(Long id) {
+        return categoryMapper.entityToDto(categoryRepository.findByOneId(id));
     }
 
     public CategoryDto updateCategory(CategoryDto categoryDto) {
@@ -37,8 +37,8 @@ public class CategoryService {
         return null;
     }
 
-    public void deleteCategory(Long id ) {
-        categoryRepository.deleteById(id);
+    public void deleteCategory(CategoryDto categoryDto) {
+        categoryRepository.delete(categoryMapper.dtoToEntity(categoryDto));
     }
 
     public List<CategoryDto> listCategory() {
