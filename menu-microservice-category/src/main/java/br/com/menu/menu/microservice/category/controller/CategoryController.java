@@ -19,9 +19,9 @@ public class CategoryController {
         return categoryService.createCategory(categoryDto);
     }
 
-    @GetMapping("/found/{id}")
+    @GetMapping("/find/{id}")
     public CategoryDto foundCategory(@PathVariable final Long id){
-        return categoryService.foundCategory(id);
+        return categoryService.findCategory(id);
     }
 
     @PutMapping("/update")
@@ -29,9 +29,9 @@ public class CategoryController {
         return categoryService.updateCategory(categoryDto);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteCategory(@RequestBody Long id) {
-        categoryService.deleteCategory(id);
+    @DeleteMapping("/delete")
+    public void deleteCategory(@RequestBody CategoryDto categoryDto) {
+        categoryService.deleteCategory(categoryDto);
     }
 
     @GetMapping("/list")

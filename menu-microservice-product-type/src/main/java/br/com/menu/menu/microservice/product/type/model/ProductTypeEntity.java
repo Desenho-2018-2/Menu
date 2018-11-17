@@ -1,5 +1,7 @@
 package br.com.menu.menu.microservice.product.type.model;
 
+import br.com.menu.menu.microservice.product.type.enums.Category;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,12 +16,12 @@ public class ProductTypeEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productTypeId;
 
-    @Column(name = "DESCRIPTION", length = 50, nullable = false)
+    @Column(name = "DESCRIPTION", length = 50, nullable = false, unique = true)
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "CATEGORY_ID")
-    private CategoryEntity categoryEntity;
+    @Column(name = "CATEGORY", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Category category;
 
     public Long getProductTypeId() {
         return productTypeId;
@@ -37,11 +39,11 @@ public class ProductTypeEntity implements Serializable {
         this.description = description;
     }
 
-    public CategoryEntity getCategoryEntity() {
-        return categoryEntity;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryEntity(CategoryEntity categoryEntity) {
-        this.categoryEntity = categoryEntity;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
