@@ -9,8 +9,8 @@ services:
       MYSQL_ROOT_PASSWORD: hellokoding
       MYSQL_PASSWORD: hellokoding
 
-  menu-microservice-category:
-    image: category
+  menu-microservice-product-type:
+    image: product-type
     build:
       context: ./
       dockerfile: Dockerfile
@@ -19,8 +19,8 @@ services:
     ports:
     - 8080:8080
 
-  menu-microservice-product-type:
-    image: product-type
+  menu-microservice-product:
+    image: product
     build:
       context: ./
       dockerfile: Dockerfile

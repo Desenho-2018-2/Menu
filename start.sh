@@ -1,11 +1,11 @@
 #!/bin/bash
 
 ##MAIN
-cd menu-microservice-category
+cd menu-microservice-product
 mvn clean install
 
 if [ $? -eq 0 ]; then
-    docker image build -t="category" .
+    docker image build -t="product" .
 else
     exit 1
 fi
