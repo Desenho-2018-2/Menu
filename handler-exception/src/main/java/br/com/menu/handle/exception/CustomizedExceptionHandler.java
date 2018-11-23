@@ -21,8 +21,10 @@ public class CustomizedExceptionHandler extends ResponseEntityExceptionHandler {
   public final ResponseEntity<ExceptionResponse> handleBadRequestException(Exception ex, WebRequest request){
     ExceptionResponse exceptionResponse = new ExceptionResponse.ExceptionResponseBuilder()
             .timesTamp(new Date())
-            .details(ex.getMessage())
-            .message(request.getDescription(false))
+            .path(request.getContextPath())
+            .message(ex.getMessage())
+            .error(ex.getCause().getMessage())
+            .status(400)
             .builder();
     return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
   }
@@ -31,8 +33,10 @@ public class CustomizedExceptionHandler extends ResponseEntityExceptionHandler {
   public final ResponseEntity<ExceptionResponse> handleInternalServerErrorException(Exception ex, WebRequest request){
     ExceptionResponse exceptionResponse = new ExceptionResponse.ExceptionResponseBuilder()
             .timesTamp(new Date())
-            .details(ex.getMessage())
             .message(request.getDescription(false))
+            .path(request.getContextPath())
+            .error(ex.getCause().getMessage())
+            .status(500)
             .builder();
     return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
   }

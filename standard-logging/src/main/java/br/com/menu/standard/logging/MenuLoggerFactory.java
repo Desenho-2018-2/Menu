@@ -6,11 +6,11 @@ public class MenuLoggerFactory {
 
   private MenuLogger menuLogger = null;
 
-  public MenuLogger getInstace(Class<?> clazz, MicroserviceLogger microserviceLogger){
+  public static MenuLogger getInstace(Class<?> clazz, MicroserviceLogger microserviceLogger){
     return new MenuStandardLogger(getClassName(clazz.getName()), microserviceLogger);
   }
 
-  private String getClassName(String clazz) {
+  private static String getClassName(String clazz) {
       return clazz.replaceFirst(REGEX, "");
   }
 }

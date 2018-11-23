@@ -1,15 +1,20 @@
 package br.com.menu.handle.exception.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ExceptionResponse implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   private Date timesTamp;
   private String message;
-  private String details;
+  private String path;
+  private Integer status;
+  private String error;
 
   public Date getTimesTamp() {
     return timesTamp;
@@ -27,19 +32,37 @@ public class ExceptionResponse implements Serializable {
     this.message = message;
   }
 
-  public String getDetails() {
-    return details;
+  public String getPath() {
+    return path;
   }
 
-  public void setDetails(String details) {
-    this.details = details;
+  public void setPath(String path) {
+    this.path = path;
+  }
+
+  public Integer getStatus() {
+    return status;
+  }
+
+  public void setStatus(Integer status) {
+    this.status = status;
+  }
+
+  public String getError() {
+    return error;
+  }
+
+  public void setError(String error) {
+    this.error = error;
   }
 
   public static class ExceptionResponseBuilder {
 
     private Date timesTamp;
     private String message;
-    private String details;
+    private String path;
+    private Integer status;
+    private String error;
 
     public ExceptionResponseBuilder timesTamp(Date timesTamp) {
       this.timesTamp = timesTamp;
@@ -51,8 +74,18 @@ public class ExceptionResponse implements Serializable {
       return this;
     }
 
-    public ExceptionResponseBuilder details(String details) {
-      this.message = message;
+    public ExceptionResponseBuilder path(String path) {
+      this.path = path;
+      return this;
+    }
+
+    public ExceptionResponseBuilder status(Integer status) {
+      this.status = status;
+      return this;
+    }
+
+    public ExceptionResponseBuilder error(String error) {
+      this.error = error;
       return this;
     }
 
@@ -60,7 +93,9 @@ public class ExceptionResponse implements Serializable {
       ExceptionResponse exceptionResponse = new ExceptionResponse();
       exceptionResponse.setTimesTamp(this.timesTamp);
       exceptionResponse.setMessage(this.message);
-      exceptionResponse.setDetails(this.details);
+      exceptionResponse.setPath(this.path);
+      exceptionResponse.setError(this.error);
+      exceptionResponse.setStatus(this.status);
       return exceptionResponse;
     }
   }
