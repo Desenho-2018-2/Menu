@@ -14,3 +14,26 @@ and run the project.
 ```
     $ ./start.sh
  ```
+ 
+ ## Api Consumer
+ 
+ * To consumer Menu Api, navigate for swagger pages.
+ 
+ Run:
+ 
+ ```
+ $ docker compose up
+ 
+ ```
+ 
+    1. Menu-microservice-product
+ 
+ Link:  http://localhost:8180/swagger-ui.html
+ 
+ ![product](img/product.png)
+ 
+    2. Menu-microservice-product-type
+ 
+ Link:  http://localhost:8080/swagger-ui.html
+ 
+ ![product-type](img/product-type.png)
