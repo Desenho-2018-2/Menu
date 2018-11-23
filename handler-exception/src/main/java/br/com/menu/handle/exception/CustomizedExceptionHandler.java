@@ -3,6 +3,7 @@ package br.com.menu.handle.exception;
 import br.com.menu.handle.exception.dto.ExceptionResponse;
 import br.com.menu.handle.exception.exception.BadRequestException;
 import br.com.menu.handle.exception.exception.InternalServerErrorException;
+import br.com.menu.handle.exception.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -39,6 +40,18 @@ public class CustomizedExceptionHandler extends ResponseEntityExceptionHandler {
             .status(500)
             .builder();
     return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+
+  @ExceptionHandler(NotFoundException.class)
+  public final ResponseEntity<ExceptionResponse> handleNotFoundException(Exception ex, WebRequest request){
+    ExceptionResponse exceptionResponse = new ExceptionResponse.ExceptionResponseBuilder()
+            .timesTamp(new Date())
+            .message(request.getDescription(false))
+            .path(request.getContextPath())
+            .error(ex.getCause().getMessage())
+            .status(404)
+            .builder();
+    return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
   }
 
 }

@@ -23,7 +23,7 @@ public class ProductTypeService {
     @Autowired
     private ProductTypeMapper productTypeMapper;
 
-    private static final MenuLogger logger = MenuLoggerFactory.getInstace(ProductTypeController.class, MicroserviceLogger.PRODUCT_TYPE);
+    private static final MenuLogger logger = MenuLoggerFactory.getInstace(ProductTypeService.class, MicroserviceLogger.PRODUCT_TYPE);
 
     public ProductTypeDto createProductType(ProductTypeDto productTypeDto) {
         logger.info("Calling product type repository to save an object.");

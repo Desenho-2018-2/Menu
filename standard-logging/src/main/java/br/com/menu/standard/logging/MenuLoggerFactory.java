@@ -4,8 +4,6 @@ public class MenuLoggerFactory {
 
   private static final String REGEX = "(.controller.*)|(.dto.*)|(.enums.*)|(.mapper.*)|(.repository.*)|(.service.*)";
 
-  private MenuLogger menuLogger = null;
-
   public static MenuLogger getInstace(Class<?> clazz, MicroserviceLogger microserviceLogger){
     return new MenuStandardLogger(getClassName(clazz.getName()), microserviceLogger);
   }
